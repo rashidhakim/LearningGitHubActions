@@ -23,4 +23,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: hakimrashid121/githubcicd:${{ github.sha }}
+          tags: hakimrashid121/githubcicd:${{ env.IMAGE_TAG }}
