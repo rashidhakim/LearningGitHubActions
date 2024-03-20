@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base image
-FROM node:14
+FROM node:18
 
 # Set the working directory in the container
 WORKDIR /app
@@ -12,6 +12,8 @@ RUN npm install
 
 # Copy the rest of the application code to the working directory
 COPY . .
+
+
 
 # Expose the port on which your Express app runs
 EXPOSE 3000
