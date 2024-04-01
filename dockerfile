@@ -16,7 +16,7 @@ COPY . .
 
 
 # Expose the port on which your Express app runs
-EXPOSE 3000
+EXPOSE 3001
 
 # Command to run your application
 CMD ["node", "index.js"]

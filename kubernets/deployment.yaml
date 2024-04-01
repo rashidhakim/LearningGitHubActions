@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cicdcont-deployment
+spec:
+  replicas: 1  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: cicdapp
+  template:
+    metadata:
+      labels:
+        app: cicdapp
+    spec:
+      containers:
+        - name: cicd-container
+          image: hakimrashid121/githubcicd:9e4f3bdcb0674beeb1a0878a0c050f3511409c2b
+          ports:
+            - containerPort: 3000
+          livenessProbe:  # Add liveness probe
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:  # Add readiness probe
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10

@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cicdcont
+  labels:
+    app: cicdapp
+spec:
+  containers:
+    - name: cicd-container
+      image: hakimrashid121/githubcicd:9e4f3bdcb0674beeb1a0878a0c050f3511409c2b
+      ports:
+        - containerPort: 3000
+      livenessProbe:  # Add liveness probe
+        tcpSocket:
+          port: 3000
+        initialDelaySeconds: 15
+        periodSeconds: 20
+      readinessProbe:  # Add readiness probe
+        tcpSocket:
+          port: 3000
+        initialDelaySeconds: 5
+        periodSeconds: 10
